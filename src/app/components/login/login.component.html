@@ -1,0 +1,82 @@
+<section class="w-75 mx-auto shadow rounded p-4 my-3 bg-main-light">
+  <h1 class="text-capitalize my-3">login now</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="handleForm()">
+    <div class="form-item">
+      <label for="email" class="text-capitalize">email</label>
+      <input
+        formControlName="email"
+        id="email"
+        type="email"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-1 font-sm pb-1 mt-0"
+        *ngIf="
+          loginForm.get('email')?.touched && loginForm.get('email')?.errors
+        "
+      >
+        <ul>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="loginForm.get('email')?.getError('required')"
+          >
+            email is required
+          </li>
+          <li class="fw-bold" *ngIf="loginForm.get('email')?.getError('email')">
+            Ex: basma@gamil.com
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="password" class="text-capitalize">password</label>
+      <input
+        formControlName="password"
+        id="password"
+        type="password"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-1 font-sm pb-1 mt-0"
+        *ngIf="
+          loginForm.get('password')?.touched &&
+          loginForm.get('password')?.errors
+        "
+      >
+        <ul>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="loginForm.get('password')?.getError('required')"
+          >
+            password is required
+          </li>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="loginForm.get('password')?.getError('pattern')"
+          >
+            must be at least 6 char
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <button class="main-btn text-capitalize mt-3" routerLink="/forget">
+        forgot password
+      </button>
+      <button
+        [disabled]="loginForm.invalid"
+        class="text-capitalize main-btn mt-3 d-block"
+      >
+        login
+        <span *ngIf="isLoadind"
+          ><i class="fa-solid fa-spinner fa-spin"></i
+        ></span>
+      </button>
+    </div>
+  </form>
+  <div class="alert alert-danger my-2 pt-2 pb-0" *ngIf="errMsg">
+    <ul>
+      <li class="font-sm fw-bold">{{ errMsg }}</li>
+    </ul>
+  </div>
+</section>

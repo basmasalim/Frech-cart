@@ -1,0 +1,38 @@
+<section class="py-4 text-center" *ngIf="allUserOrders">
+  <div class="container">
+    <h2 class="text-main fw-bolder mb-3 text-capitalize">all your orders</h2>
+    <div class="row g-4">
+      <div role="button" class="col-md-6" *ngFor="let item of allUserOrders">
+        <div class="product mx-auto">
+          <div class="imgContainer d-flex">
+            <div class="col-3" *ngFor="let i of item.cartItems">
+              <img
+                height="220"
+                width="200"
+                [src]="i.product.imageCover"
+                class="card-img-top"
+                [alt]="i.product.title"
+              />
+            </div>
+          </div>
+          <div class="card-footer text-start bg-body-secondary p-4">
+            <h5 class="card-title">
+              order price : {{ item.totalOrderPrice }} EGP
+            </h5>
+            <p class="mb-0">payment method: {{ item.paymentMethodType }}</p>
+            <p>
+              order State :
+              <span *ngIf="item.isPaid && item.isDelivered"
+                >paid and delivered</span
+              >
+              <span *ngIf="item.isPaid && !item.isDelivered"
+                >Paid and didn't delivered yet</span
+              >
+              <span *ngIf="!item.isPaid"> Not paid</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

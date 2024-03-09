@@ -1,0 +1,66 @@
+<section class="w-75 mb-3 mx-auto p-3" *ngIf="cardDetails; else msg">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1 class="h2 text-capitalize">shop cart</h1>
+    <button
+      (click)="clear()"
+      class="text-capitalize btn btn-sm btn-outline-danger"
+    >
+      clear all
+    </button>
+  </div>
+  <p class="text-capitalize text-main">
+    total price: {{ cardDetails.totalCartPrice | currency : " E£" }}
+  </p>
+  <div class="row border-bottom py-2" *ngFor="let item of cardDetails.products">
+    <div class="col-md-1">
+      <img
+        class="w-100"
+        [src]="item.product.imageCover"
+        [alt]="item.product.title"
+      />
+    </div>
+    <div class="col-md-11 d-flex justify-content-between align-items-center">
+      <div>
+        <h3 class="h6">{{ item.product.title }}</h3>
+        <p class="text-main text-capitalize small mb-0">
+          price:{{ item.price | currency : " E£" }}
+        </p>
+        <button
+          #btnRemove
+          (click)="removeItem(item.product._id, btnRemove)"
+          class="btn m-0 p-0 text-main"
+        >
+          <i class="fas fa-trash-can"></i> Remove
+        </button>
+      </div>
+      <div>
+        <button
+          #btn1
+          (click)="changeCount(item.product._id, item.count + 1, btn1, btn2)"
+          class="btn btn-sm border-success"
+        >
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <span class="mx-2">{{ item.count }}</span>
+        <button
+          #btn2
+          (click)="changeCount(item.product._id, item.count - 1, btn1, btn2)"
+          class="btn btn-sm border-success"
+        >
+          <i class="fa-solid fa-minus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="text-capitalize main-btn mt-3"
+    [routerLink]="['/payment', cardDetails._id]"
+  >
+    online payment <img src="./assets/images/visa-1.svg" alt="visa logo" />
+  </button>
+</section>
+
+<<ng-template #msg>
+  <h2 class="text-center text-capitalize">your cart is empty ..</h2>
+</ng-template>

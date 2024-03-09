@@ -1,0 +1,177 @@
+<section class="w-75 mx-auto shadow rounded p-4 my-3 bg-main-light">
+  <h1 class="text-capitalize my-3">register now</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="handleForm()">
+    <div class="form-item">
+      <label for="name" class="text-capitalize">name</label>
+      <input
+        formControlName="name"
+        id="name"
+        type="text"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-1 font-sm pb-1 mt-0"
+        *ngIf="
+          registerForm.get('name')?.touched && registerForm.get('name')?.errors
+        "
+      >
+        <ul>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('name')?.getError('required')"
+          >
+            name is required
+          </li>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('name')?.getError('minlength')"
+          >
+            name min length 3
+          </li>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('name')?.getError('maxlength')"
+          >
+            name max length 10
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="email" class="text-capitalize">email</label>
+      <input
+        formControlName="email"
+        id="email"
+        type="email"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-1 font-sm pb-1 mt-0"
+        *ngIf="
+          registerForm.get('email')?.touched &&
+          registerForm.get('email')?.errors
+        "
+      >
+        <ul>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('email')?.getError('required')"
+          >
+            email is required
+          </li>
+          <li
+            class="fw-bold"
+            *ngIf="registerForm.get('email')?.getError('email')"
+          >
+            Ex: basma@gamil.com
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="password" class="text-capitalize">password</label>
+      <input
+        formControlName="password"
+        id="password"
+        type="password"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-1 font-sm pb-1 mt-0"
+        *ngIf="
+          registerForm.get('password')?.touched &&
+          registerForm.get('password')?.errors
+        "
+      >
+        <ul>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('password')?.getError('required')"
+          >
+            password is required
+          </li>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('password')?.getError('pattern')"
+          >
+            must be at least 6 char
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="rePassword" class="text-capitalize">rePassword</label>
+      <input
+        formControlName="rePassword"
+        id="rePassword"
+        type="password"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-1 font-sm pb-1 mt-0"
+        *ngIf="
+          registerForm.get('rePassword')?.touched &&
+          registerForm.get('rePassword')?.errors
+        "
+      >
+        <ul>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('rePassword')?.getError('required')"
+          >
+            rePassword is required
+          </li>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('rePassword')?.getError('mismatch')"
+          >
+            Password confirmation is incorrect
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="phone" class="text-capitalize">phone</label>
+      <input
+        formControlName="phone"
+        id="phone"
+        type="tel"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-1 font-sm pb-1 mt-0"
+        *ngIf="
+          registerForm.get('phone')?.touched &&
+          registerForm.get('phone')?.errors
+        "
+      >
+        <ul>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('phone')?.getError('required')"
+          >
+            phone is required
+          </li>
+          <li
+            class="text-capitalize fw-bold"
+            *ngIf="registerForm.get('phone')?.getError('pattern')"
+          >
+            accept only egypt phone numbers
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      [disabled]="registerForm.invalid"
+      class="text-capitalize main-btn mt-3 ms-auto d-block"
+    >
+      register
+      <span *ngIf="isLoadind"><i class="fa-solid fa-spinner fa-spin"></i></span>
+    </button>
+  </form>
+  <div class="alert alert-danger my-2 pt-2 pb-0" *ngIf="errMsg">
+    <ul>
+      <li class="font-sm fw-bold">{{ errMsg }}</li>
+    </ul>
+  </div>
+</section>

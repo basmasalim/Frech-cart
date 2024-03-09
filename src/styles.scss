@@ -1,0 +1,172 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+$main-color: #0aad0a;
+$light-color: #f0f3f2;
+$shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+  rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+  rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+$font-family: "Encode Sans Expanded", sans-serif;
+$rating-color: #ffc908;
+$main-transition: 0.8s;
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $light-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #049704f7;
+  border-radius: 50px;
+  box-shadow: 0 0 20px 50px #049704f7;
+  border-radius: 2px;
+}
+
+.nav-link {
+  transition: unset !important;
+}
+
+.active-link {
+  background-color: $main-color;
+  color: #fff !important;
+  border-radius: 5px;
+}
+body {
+  font-family: $font-family;
+}
+
+.rating-color {
+  color: $rating-color;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-sm {
+  font-size: 12px;
+}
+
+.text-main {
+  color: $main-color;
+}
+
+.text-main-light {
+  color: $light-color;
+}
+
+.bg-main {
+  background-color: $main-color !important;
+}
+
+.bg-main-light {
+  background-color: $light-color !important;
+}
+
+.main-btn {
+  border: unset;
+  cursor: pointer;
+  color: #fff !important;
+  background-color: $main-color !important;
+  padding: 4px 8px;
+  transition: background-color $main-transition;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #08e208 !important;
+  }
+
+  &:disabled {
+    background-color: #067a0663 !important;
+    color: #ffffff8e !important;
+    cursor: not-allowed;
+  }
+}
+
+input:focus {
+  box-shadow: 0 0 0 0.25rem rgb(10 173 10 / 39%) !important;
+  border-color: #0aad0a !important;
+}
+
+.product {
+  padding: 6px 9px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: solid 1px $main-color;
+  position: relative;
+  transition: all 0.5s;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 5px 0px #0aad0a;
+    .add-btn {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    .heart {
+      right: 5px;
+    }
+  }
+  .add-btn {
+    transition: transform 1s, opacity 1s, background-color 1s;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  .heart {
+    font-size: 30px;
+    position: absolute;
+    top: 5px;
+    right: -50px;
+    z-index: 99;
+    cursor: pointer;
+    transition: right 0.5s;
+    color: #0aad0a;
+  }
+  &:hover .image img {
+    transform: scale(1.2);
+  }
+  .image img {
+    transition: transform 0.5s;
+    overflow: hidden;
+  }
+}
+
+.ngx-pagination .current {
+  background: #0aad0a !important;
+  border-radius: 5px !important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  background: #dafada !important;
+  border-radius: 5px !important;
+  color: $main-color !important;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+  color: #18aa1c !important;
+}
+
+.toast-success {
+  position: fixed !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+.product {
+  overflow: hidden;
+
+  .main-btn {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+
+  &:hover {
+    .main-btn {
+      transform: translateY(0%);
+      opacity: 1;
+      transition: 0.7s;
+    }
+  }
+}

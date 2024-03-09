@@ -1,0 +1,86 @@
+<section class="py-4" *ngIf="products.length > 0">
+  <h2 class="text-capitalize text-center fw-bold text-main">products</h2>
+  <!-- Search input -->
+  <input
+    type="text"
+    class="form-control w-50 mx-auto form-control-sm mb-5 mt-2"
+    placeholder="Search"
+    [(ngModel)]="term"
+  />
+  <div class="row justify-content-center g-4">
+    <div
+      *ngFor="
+        let product of products
+          | search : term
+          | paginate
+            : {
+                id: 'productPaginate',
+                itemsPerPage: pageSize,
+                currentPage: currentPage,
+                totalItems: total
+              }
+      "
+      class="col-sm-6 col-md-4 col-lg-3 col-xl-2 my-2"
+    >
+      <div class="product h-100">
+        <header [routerLink]="['/productDetails', product._id]" role="button">
+          <div class="image overflow-hidden">
+            <figure>
+              <img
+                class="w-100"
+                [src]="product.imageCover"
+                [alt]="product.title"
+                [title]="product.title"
+              />
+            </figure>
+          </div>
+          <h3 class="small">{{ product.title | cuttext : 2 }}</h3>
+          <h4 class="h6 text-main">{{ product.category.name }}</h4>
+          <div
+            class="product-footer d-flex align-items-center justify-content-between small"
+          >
+            <span>{{ product.price | currency : "E£" }}</span>
+            <span>
+              <ng-container *ngFor="let num of [1, 2, 3, 4, 5]">
+                <i
+                  *ngIf="product.ratingsAverage >= num"
+                  [class.rating-color]="true"
+                  class="fas fa-star"
+                ></i>
+              </ng-container>
+
+              <span class="text-muted">{{ product.ratingsAverage }}</span>
+            </span>
+          </div>
+        </header>
+        <footer>
+          <button
+            #btnAdd
+            (click)="addProduct(product._id, btnAdd)"
+            class="main-btn text-capitalize w-100 mt-1"
+          >
+            add to cart
+          </button>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center mt-4">
+    <pagination-controls
+      id="productPaginate"
+      (pageChange)="pageChanged($event)"
+      (pageBoundsCorrection)="pageChanged($event)"
+      [maxSize]="9"
+      [directionLinks]="true"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page"
+    >
+    </pagination-controls>
+  </div>
+</section>

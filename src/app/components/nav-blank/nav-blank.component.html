@@ -1,0 +1,119 @@
+<nav #navBar class="navbar navbar-expand-lg bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">
+      <img src="./assets/images/freshcart-logo.svg" alt="logo" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav text-center mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/home"
+            routerLinkActive="active-link"
+            >Home</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/products"
+            routerLinkActive="active-link"
+            >Products</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/brands"
+            routerLinkActive="active-link"
+            >Brands</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/categories"
+            routerLinkActive="active-link"
+            >Categories</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center mx-auto">
+        <li class="nav-item">
+          <a
+            routerLink="/wishlist"
+            class="nav-link active position-relative"
+            aria-current="page"
+          >
+            <i class="fa-solid fa-heart fa-2x text-danger"></i>
+            <span
+              class="badge bg-success text-white position-absolute top-0 end-0"
+              >{{ favNum }}</span
+            >
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active position-relative"
+            aria-current="page"
+            routerLink="/cart"
+          >
+            <i class="fas fa-cart-shopping fa-2x text-main"></i>
+            <span
+              class="badge bg-success text-whitebg-info position-absolute top-0 end-0"
+              >{{ cartNum }}</span
+            >
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle start-0"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fas fa-user fa-2x text-main"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li role="button">
+              <a
+                class="dropdown-item text-capitalize fs-6"
+                routerLink="/forgetpasswoed"
+                >forgot password</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item d-flex gap-2 me-3" role="button">
+          <i class="fab fa-instagram fa-lg"></i>
+          <i class="fab fa-facebook fa-lg"></i>
+          <i class="fab fa-tiktok fa-lg"></i>
+          <i class="fab fa-twitter fa-lg"></i>
+          <i class="fab fa-youtube fa-lg"></i>
+        </li>
+
+        <li class="nav-item">
+          <span (click)="signOut()" role="button">SignOut</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,34 @@
+<section class="my-5 w-75 mx-auto rounded shadow p-3 bg-main-light">
+  <h1 class="text-capitalize">checkout session</h1>
+  <form [formGroup]="orderForm" (ngSubmit)="handleForm()">
+    <div class="form-item">
+      <label for="details" class="text-capitalize">delails</label>
+      <input
+        class="form-control"
+        type="text"
+        id="delails"
+        formControlName="details"
+      />
+    </div>
+    <div class="form-item">
+      <label for="phone" class="text-capitalize">phone</label>
+      <input
+        class="form-control"
+        type="tel"
+        id="phone"
+        formControlName="phone"
+      />
+    </div>
+    <div class="form-item">
+      <label for="city" class="text-capitalize">city</label>
+      <input
+        class="form-control"
+        type="text"
+        id="city"
+        formControlName="city"
+      />
+    </div>
+
+    <button class="text-capitalize main-btn mt-3">checkout</button>
+  </form>
+</section>
